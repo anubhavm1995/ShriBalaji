@@ -16,7 +16,6 @@
 
 	<properties>
 		<java.version>1.8</java.version>
-		<start-class>org.springframework.boot.SpringApplication.ShriBalajiApplication</start-class>
 	</properties>
 
 	<dependencies>
