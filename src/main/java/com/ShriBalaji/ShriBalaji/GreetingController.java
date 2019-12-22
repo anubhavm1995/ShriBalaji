@@ -21,13 +21,12 @@ public class GreetingController {
 	    return "Default Page";
     }
 	
-	@PostMapping(path = "/contactme") 
+	@PostMapping(path = "/contactme")
 	public String postData(@RequestBody ContactUs obj){
-	System.out.println(obj.toString());
     SimpleMailMessage msg = new SimpleMailMessage();
     msg.setTo("dynamicindiandude@gmail.com");
     msg.setSubject("Message Sent from "+obj.getFullName());
-    msg.setText("Fullname : "+obj.getFullName()+" \n"
+    msg.setText("Hi Shahrukh ! I have some query: \n\n\n"+"Fullname : "+obj.getFullName()+" \n"
     		+ "Address : "+obj.getEmail()+" \n"
     		+"Number : "+obj.getNumber()+" \n"
     		+"Message : "+obj.getMessage());
