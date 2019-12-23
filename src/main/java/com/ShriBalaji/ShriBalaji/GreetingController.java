@@ -27,7 +27,7 @@ public class GreetingController {
     msg.setTo("dynamicindiandude@gmail.com");
     msg.setSubject("Message Sent from "+obj.getFullName());
     msg.setText("Hi Shahrukh ! I have some query: \n\n\n"+"Fullname : "+obj.getFullName()+" \n"
-    		+ "Address : "+obj.getEmail()+" \n"
+    		+ "Email Id : "+obj.getEmail()+" \n"
     		+"Number : "+obj.getNumber()+" \n"
     		+"Message : "+obj.getMessage());
   
