@@ -22,7 +22,7 @@ public class GreetingController {
 	    return "Default Page";
     }
 	
-	@CrossOrigin(origins = "https://balajitaxi-c0708.firebaseapp.com/#")
+	@CrossOrigin(origins = "*")
 	@PostMapping(path = "/contactme")
 	public String postData(@RequestBody ContactUs obj){
     SimpleMailMessage msg = new SimpleMailMessage();
