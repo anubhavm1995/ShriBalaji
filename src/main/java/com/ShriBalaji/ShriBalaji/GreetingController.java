@@ -4,6 +4,7 @@ package com.ShriBalaji.ShriBalaji;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,6 +22,7 @@ public class GreetingController {
 	    return "Default Page";
     }
 	
+	@CrossOrigin(origins = "https://balajitaxi-c0708.firebaseapp.com/#")
 	@PostMapping(path = "/contactme")
 	public String postData(@RequestBody ContactUs obj){
     SimpleMailMessage msg = new SimpleMailMessage();
