@@ -7,6 +7,7 @@ public class ContactUs {
 	private StringBuffer email;
 	private StringBuffer number;
 	private StringBuffer message;
+	
 	public StringBuffer getFullName() {
 		return fullName;
 	}
