@@ -44,6 +44,7 @@ public class GreetingController {
     	System.out.println("Exception occurred:--> " + e);
     	return "Failed";
     }
+    System.out.println("Email Sent");
     return "Email Sent";
     }
 	
