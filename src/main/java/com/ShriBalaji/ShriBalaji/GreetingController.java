@@ -34,9 +34,16 @@ public class GreetingController {
     		+"Number : "+obj.getNumber()+" \n"
     		+"Message : "+obj.getMessage());
   
-    System.out.println("Sendingg....");    
-    javaMailSender.send(msg);
-    System.out.println("Sent");
+    System.out.println("Sendingg....");
+    try
+    {
+    	javaMailSender.send(msg);
+    }
+    catch(Exception e)
+    {
+    	System.out.println("Exception occurred:--> " + e);
+    	return "Failed";
+    }
     return "Email Sent";
     }
 	
