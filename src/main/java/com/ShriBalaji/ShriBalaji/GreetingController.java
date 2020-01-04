@@ -25,6 +25,7 @@ public class GreetingController {
 	@CrossOrigin(origins = "*")
 	@PostMapping(path = "/contactme")
 	public String postData(@RequestBody ContactUs obj){
+	System.out.println("Entering into function postData");  
     SimpleMailMessage msg = new SimpleMailMessage();
     msg.setTo("dynamicindiandude@gmail.com");
     msg.setSubject("Message Sent from "+obj.getFullName());
@@ -38,7 +39,6 @@ public class GreetingController {
     System.out.println("Sent");
     return "Email Sent";
     }
-	
 	
 	@GetMapping(path = "/test") 
 	public String getData(){

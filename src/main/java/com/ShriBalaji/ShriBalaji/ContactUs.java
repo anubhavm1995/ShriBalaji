@@ -5,7 +5,7 @@ public class ContactUs {
 
 	private StringBuffer fullName;
 	private StringBuffer email;
-	private int number;
+	private StringBuffer number;
 	private StringBuffer message;
 	public StringBuffer getFullName() {
 		return fullName;
@@ -19,11 +19,11 @@ public class ContactUs {
 	public void setEmail(StringBuffer email) {
 		this.email = email;
 	}
-	
-	public int getNumber() {
+		
+	public StringBuffer getNumber() {
 		return number;
 	}
-	public void setNumber(int number) {
+	public void setNumber(StringBuffer number) {
 		this.number = number;
 	}
 	public StringBuffer getMessage() {
