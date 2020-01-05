@@ -1,8 +1,11 @@
 package com.ShriBalaji.ShriBalaji;
 
+import com.sendgrid.*;
+
+import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
+//import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,12 +25,13 @@ public class GreetingController {
 	    return "Default Page";
     }
 	
-	@CrossOrigin(origins = "*")
+	//GMAIL
+	/*@CrossOrigin(origins = "*")
 	@PostMapping(path = "/contactme")
 	public String postData(@RequestBody ContactUs obj){
 	System.out.println("Entering into function postData");  
     SimpleMailMessage msg = new SimpleMailMessage();
-    msg.setTo("dynamicindiandude@gmail.com");
+    msg.setTo("shreebalajitour2020@gmail.com");
     msg.setSubject("Message Sent from "+obj.getFullName());
     msg.setText("Hi Shahrukh ! I have some query: \n\n\n"+"Fullname : "+obj.getFullName()+" \n"
     		+ "Email Id : "+obj.getEmail()+" \n"
@@ -46,7 +50,35 @@ public class GreetingController {
     }
     System.out.println("Email Sent");
     return "Email Sent";
+    }*/
+	
+	@CrossOrigin(origins = "*")
+	@PostMapping(path = "/contactme")
+	public String postData(@RequestBody ContactUs obj) throws IOException{
+		System.out.println("Entering into function postData");  
+	    Email from = new Email("shreebalajitour2020@gmail.com");
+	    String subject = "Hello World from the SendGrid Java Library!";
+	    Email to = new Email("shreebalajitour2020@gmail.com");
+	    Content content = new Content("text/plain", "Hello, Email!");
+	    Mail mail = new Mail(from, subject, to, content);
+
+	    SendGrid sg = new SendGrid(System.getenv("SENDGRID_API_KEY"));
+	    Request request = new Request();
+	    try {
+	      request.method = Method.POST;
+	      request.endpoint = "mail/send";
+	      request.body = mail.build();
+	      Response response = sg.api(request);
+	      System.out.println(response.statusCode);
+	      System.out.println(response.body);
+	      System.out.println(response.headers);
+	    } catch (IOException ex) {
+	      throw ex;
+	    }
+		return "sent";
+		  
     }
+	
 	
 	@GetMapping(path = "/test") 
 	public String getData(){
