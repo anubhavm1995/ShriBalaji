@@ -60,7 +60,7 @@ public class GreetingController {
     return "Email Sent";
     }*/
 	
-	//@CrossOrigin(origins = "*")
+	@CrossOrigin(origins = "*")
 	@PostMapping(path = "/contactme")
 	public String postData(@RequestBody ContactUs obj) throws IOException{
 		System.out.println("Entering into function postData");  
