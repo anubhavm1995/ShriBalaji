@@ -1,6 +1,6 @@
 package com.ShriBalaji.ShriBalaji;
 
-import com.sendgrid.*;
+
 
 import java.io.IOException;
 
@@ -13,13 +13,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sendgrid.Content;
+import com.sendgrid.Email;
+import com.sendgrid.Mail;
+import com.sendgrid.Method;
+import com.sendgrid.Request;
+import com.sendgrid.Response;
+import com.sendgrid.SendGrid;
+
 @RestController
 public class GreetingController {
 
 
-	@Autowired
-    private JavaMailSender javaMailSender;
-	
+//	@Autowired
+//    private JavaMailSender javaMailSender;
+//	
 	@GetMapping(path = "/") 
 	public String firstPage(){
 	    return "Default Page";
@@ -65,13 +73,13 @@ public class GreetingController {
 	    SendGrid sg = new SendGrid(System.getenv("SENDGRID_API_KEY"));
 	    Request request = new Request();
 	    try {
-	      request.method = Method.POST;
-	      request.endpoint = "mail/send";
-	      request.body = mail.build();
+	      request.setMethod(Method.POST);
+	      request.setEndpoint("mail/send");
+	      request.setBody(mail.build());
 	      Response response = sg.api(request);
-	      System.out.println(response.statusCode);
-	      System.out.println(response.body);
-	      System.out.println(response.headers);
+	      System.out.println(response.getStatusCode());
+	      System.out.println(response.getBody());
+	      System.out.println(response.getHeaders());
 	    } catch (IOException ex) {
 	      throw ex;
 	    }
